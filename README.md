@@ -1,5 +1,18 @@
-# مشروع ريان الاول# اهلا بكم في مستودعي البرمجي ، انا ريان اخطو خطواتي الاولى في عالم التقنيه ## اهدافي تعلم البرمجه من الصفر 
-التخصص في مجال # الامن السيبراني  ##
-احتراف التعامل مع ادوات #  GitHub  
-تم انشاء هذا الملف كاول تجربه كود حقيقي لي # 
-MyfrststepintotheworldofprogrammingandGitHub.
+import socket
+
+target = "google.com" 
+
+def port_scan(port):
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(1)
+        result = s.connect_ex((target, port))
+        if result == 0:
+            print(f"Port {port} is OPEN")
+        s.close()
+    except:
+        pass
+
+print(f"Scanning target: {target}")
+for p in range(1, 101):
+    port_scan(p)
