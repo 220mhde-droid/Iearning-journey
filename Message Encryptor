@@ -1,0 +1,14 @@
+def simple_encrypt(text, key):
+    result = ""
+    for char in text:
+        # تشفير كل حرف عبر تغيير قيمته الرقمية بناءً على المفتاح
+        result += chr(ord(char) + key)
+    return result
+
+msg = "Security is Priority"
+secret_key = 5
+encrypted = simple_encrypt(msg, secret_key)
+
+print("--- نظام التشفير الاحترافي ---")
+print(f"الرسالة الأصلية: {msg}")
+print(f"الرسالة المشفرة: {encrypted}")
