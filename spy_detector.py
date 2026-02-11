@@ -1,18 +1,28 @@
 import os
+from datetime import datetime
 
-# أداة ريان لكشف ملفات التجسس المخفية
-def spy_file_detector():
-    suspicious_files = ["secret_data.txt", "log.txt", "trace.py"]
-    found = False
+# نسخة ريان المطورة: الدرع مع سجل التعقب (V2)
+def smart_shield_v2(code_to_check):
+    # وضعنا "os." ككلمة خطر أساسية بناءً على تحليلك الذكي
+    danger_words = ["os.", "socket.connect", "requests.post", "eval(base64"]
+    is_safe = True
     
-    print("🔍 جاري فحص النظام عن ملفات مشبوهة...")
+    print("🛡️ جاري فحص نوايا الكود...")
     
-    for file in suspicious_files:
-        if os.path.exists(file):
-            print(f"⚠️ تحذير: تم العثور على ملف مشبوه: {file}")
-            found = True
+    for word in danger_words:
+        if word in code_to_check:
+            is_safe = False
+            # توثيق محاولة الاختراق في ملف سري للأدلة
+            with open("security_log.txt", "a") as log:
+                time_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                log.write(f"[{time_now}] محاولة اختراق مكتشفة باستخدام: {word}\n")
+            break
             
-    if not found:
-        print("✅ النظام نظيف، لا توجد ملفات تجسس معروفة.")
+    if is_safe:
+        print("✅ الكود نظيف ولا يحتوي على أوامر اختراق مباشرة.")
+    else:
+        print("🛑 خطر! ريان، هذا الكود حاول العبث بجهازك وتم تسجيله.")
 
-spy_file_detector()
+# مثال لتجربة الدرع (سيقوم بإنشاء ملف security_log.txt تلقائياً)
+code_sample = "os.system('format C:')"
+smart_shield_v2(code_sample)
