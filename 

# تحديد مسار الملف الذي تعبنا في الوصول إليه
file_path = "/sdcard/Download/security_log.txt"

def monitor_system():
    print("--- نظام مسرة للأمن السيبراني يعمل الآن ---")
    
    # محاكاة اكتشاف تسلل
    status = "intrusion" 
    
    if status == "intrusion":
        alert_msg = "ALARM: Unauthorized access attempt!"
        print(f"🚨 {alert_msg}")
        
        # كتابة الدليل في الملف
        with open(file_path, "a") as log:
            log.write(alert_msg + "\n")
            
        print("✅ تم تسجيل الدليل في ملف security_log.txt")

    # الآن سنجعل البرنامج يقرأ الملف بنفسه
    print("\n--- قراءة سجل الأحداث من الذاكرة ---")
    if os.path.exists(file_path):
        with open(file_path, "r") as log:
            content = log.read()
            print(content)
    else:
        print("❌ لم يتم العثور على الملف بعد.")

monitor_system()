@@ -1,0 +1,31 @@
+import os
+
+# تحديد مسار الملف الذي تعبنا في الوصول إليه
+file_path = "/sdcard/Download/security_log.txt"
+
+def monitor_system():
+    print("--- نظام مسرة للأمن السيبراني يعمل الآن ---")
+    
+    # محاكاة اكتشاف تسلل
+    status = "intrusion" 
+    
+    if status == "intrusion":
+        alert_msg = "ALARM: Unauthorized access attempt!"
+        print(f"🚨 {alert_msg}")
+        
+        # كتابة الدليل في الملف
+        with open(file_path, "a") as log:
+            log.write(alert_msg + "\n")
+            
+        print("✅ تم تسجيل الدليل في ملف security_log.txt")
+
+    # الآن سنجعل البرنامج يقرأ الملف بنفسه
+    print("\n--- قراءة سجل الأحداث من الذاكرة ---")
+    if os.path.exists(file_path):
+        with open(file_path, "r") as log:
+            content = log.read()
+            print(content)
+    else:
+        print("❌ لم يتم العثور على الملف بعد.")
+
+monitor_system()
